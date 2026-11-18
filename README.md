@@ -22,6 +22,11 @@ Generating code with an LLM is easy. Generating code a senior engineer would mer
 
 ## How it works
 
+![FUBANX architecture: radar and web form, Azure backend with analyzer, Discord triage, engineer and QA loop, pull request to open-source-solutions](assets/architecture.jpg)
+
+<details>
+<summary>Same flow as a text diagram</summary>
+
 ```mermaid
 flowchart TD
     T["Timer, 08:00 UTC"] --> R["Radar: Hacker News and 5 subreddits, last 24h only"]
@@ -39,6 +44,8 @@ flowchart TD
     Q -->|"passed"| PR["Pull request in open-source-solutions"]
     PR --> H["Human review and merge"]
 ```
+
+</details>
 
 FUBANX runs on Azure Functions (Python 3.12, Consumption plan), with Storage Queues between every stage and Table Storage as its memory. The infrastructure is provisioned with OpenTofu, and [fubanx.com](https://fubanx.com) runs on Next.js on Vercel.
 
