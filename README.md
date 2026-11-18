@@ -1,5 +1,11 @@
 # FUBANX
 
+[![Azure Functions](https://img.shields.io/badge/Azure%20Functions-Python%20v2-0062AD?logo=azurefunctions&logoColor=white)](https://learn.microsoft.com/azure/azure-functions/)
+[![OpenTofu](https://img.shields.io/badge/OpenTofu-IaC-FFDA18?logo=opentofu&logoColor=black)](https://opentofu.org)
+[![Python 3.12](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org)
+[![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
+
 **An event-driven SRE agent that finds unsolved operations problems, puts a human in front of every risky decision, and ships QA-checked fixes as pull requests.**
 
 > ### See it live at [fubanx.com](https://fubanx.com)
@@ -17,7 +23,7 @@ Generating code with an LLM is easy. Generating code a senior engineer would mer
 ## How it works
 
 ```mermaid
-flowchart LR
+flowchart TD
     T["Timer, 08:00 UTC"] --> R["Radar: Hacker News and 5 subreddits, last 24h only"]
     R --> A["Analyzer: Gemini 2.5 Flash, strict JSON"]
     A --> C{"CIO routing, plain code"}
@@ -114,6 +120,7 @@ Azure Functions · Azure Storage Queues and Tables · OpenTofu · Python 3.12 ·
 ## Author
 
 **Adrián Tamargo**, Cloud & DevOps Engineer, Barcelona
+
 [fubanx.com](https://fubanx.com) · [GitHub](https://github.com/AdrianStudio) · [LinkedIn](https://linkedin.com/in/adrian-tamargo/)
 
 The engine source is private. This repository documents how FUBANX works; the code it produces is public in [open-source-solutions](https://github.com/AdrianStudio/open-source-solutions).
