@@ -53,11 +53,11 @@ FUBANX runs on Azure Functions (Python 3.12, Consumption plan), with Storage Que
 | --- | --- |
 | Radar | Every morning at 08:00 UTC it collects posts and their top comments from Hacker News and r/devops, r/sysadmin, r/selfhosted, r/msp and r/SaaS. Anything older than 24 hours is dropped before a model sees it. |
 | Analyzer | A cheap model scores each post (problem, niche, pain from 1 to 10, why current tools fail) as strict JSON validated in code. Threads already solved in the comments are discarded. |
-| Routing | Plain code, not a model. Only cases with pain 8 or higher from r/sysadmin, r/msp, r/devops or r/selfhosted go to engineering on their own. Everything else waits for a human. |
+| Routing | Plain code, not a model. Only cases with pain 8 or higher from r/sysadmin, r/msp or r/devops go to engineering on their own. Everything else waits for a human. |
 | Triage | Every opportunity becomes a Discord card with Approve and Dismiss buttons. Web submissions always need approval. |
 | Engineer | A stronger model writes one artifact in its assigned stack, with its README, and iterates against the QA wall. |
 | Pull request | One branch, one commit (code plus README), one pull request. Retries never open a second one. Nothing is merged without a human. |
-| Reporting | The outcome of every task, with its cost, goes back to Discord, and a daily report at 19:00 UTC sums up PRs, failures, tokens and spend. |
+| Reporting | The outcome of every task, with its cost, goes to a dedicated Discord engineering channel, and a daily report at 19:00 UTC sums up PRs, failures, tokens and spend. |
 
 ## Human triage: the barrier against prompt injection
 
