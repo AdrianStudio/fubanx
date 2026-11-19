@@ -9,7 +9,7 @@
 **An event-driven SRE agent that finds unsolved operations problems, puts a human in front of every risky decision, and ships QA-checked fixes as pull requests.**
 
 > ### See it live at [fubanx.com](https://fubanx.com)
-> ### Check out the solutions FUBANX has built: [AdrianStudio/open-source-solutions](https://github.com/AdrianStudio/open-source-solutions)
+> ### Check out the solutions FUBANX has built: [AdrianStudio/fubanx-solutions](https://github.com/AdrianStudio/fubanx-solutions)
 > Every fix lands there as a reviewed pull request, organized as `<stack>/<category>/<project>/` with the code and a README for each one.
 
 ## Why it exists
@@ -22,7 +22,7 @@ Generating code with an LLM is easy. Generating code a senior engineer would mer
 
 ## How it works
 
-![FUBANX architecture: radar and web form, Azure backend with analyzer, Discord triage, engineer and QA loop, pull request to open-source-solutions](assets/architecture.jpg)
+![FUBANX architecture: radar and web form, Azure backend with analyzer, Discord triage, engineer and QA loop, pull request to fubanx-solutions](assets/architecture.jpg)
 
 <details>
 <summary>Same flow as a text diagram</summary>
@@ -41,7 +41,7 @@ flowchart TD
     EQ --> E["Engineer: Claude Sonnet 5.5"]
     E --> Q{"QA wall: AST, parsers, README reviewer, security gate"}
     Q -->|"rejected, max 3 attempts"| E
-    Q -->|"passed"| PR["Pull request in open-source-solutions"]
+    Q -->|"passed"| PR["Pull request in fubanx-solutions"]
     PR --> H["Human review and merge"]
 ```
 
@@ -111,7 +111,7 @@ FUBANX uses a cheap model where volume is high and a strong model where quality 
 | Radar, analysis, content | Gemini 2.5 Flash | Under $0.05 for a full daily run (about 56k tokens) |
 | Engineering | Claude Sonnet 5.5 | About $0.08 per pull request |
 
-Why the split: on 2026-11-18 the engineer was still running on Gemini 2.5 Flash, and both cases routed that day failed the QA wall on all 3 attempts. On Claude Sonnet 5.5, four real cases passed on the first attempt at $0.073 to $0.093 each. Re-running those two failed cases in production opened [#8](https://github.com/AdrianStudio/open-source-solutions/pull/8) and [#9](https://github.com/AdrianStudio/open-source-solutions/pull/9) at $0.074 each.
+Why the split: on 2026-11-18 the engineer was still running on Gemini 2.5 Flash, and both cases routed that day failed the QA wall on all 3 attempts. On Claude Sonnet 5.5, four real cases passed on the first attempt at $0.073 to $0.093 each. Re-running those two failed cases in production opened [#8](https://github.com/AdrianStudio/fubanx-solutions/pull/8) and [#9](https://github.com/AdrianStudio/fubanx-solutions/pull/9) at $0.074 each.
 
 Spend is capped by design:
 
@@ -130,4 +130,4 @@ Azure Functions · Azure Storage Queues and Tables · OpenTofu · Python 3.12 ·
 
 [fubanx.com](https://fubanx.com) · [GitHub](https://github.com/AdrianStudio) · [LinkedIn](https://linkedin.com/in/adrian-tamargo/)
 
-The engine source is private. This repository documents how FUBANX works; the code it produces is public in [open-source-solutions](https://github.com/AdrianStudio/open-source-solutions).
+The engine source is private. This repository documents how FUBANX works; the code it produces is public in [fubanx-solutions](https://github.com/AdrianStudio/fubanx-solutions).
