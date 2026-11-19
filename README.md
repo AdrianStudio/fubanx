@@ -22,30 +22,8 @@ Generating code with an LLM is easy. Generating code a senior engineer would mer
 
 ## How it works
 
-![FUBANX architecture: radar and web form, Azure backend with analyzer, Discord triage, engineer and QA loop, pull request to fubanx-solutions](assets/architecture.jpg)
+<img width="1024" height="566" alt="image" src="https://github.com/user-attachments/assets/78b9f8a4-ca17-43bb-9020-5630a4628c2e" />
 
-<details>
-<summary>Same flow as a text diagram</summary>
-
-```mermaid
-flowchart TD
-    T["Timer, 08:00 UTC"] --> R["Radar: Hacker News and 5 subreddits, last 24h only"]
-    R --> A["Analyzer: Gemini 2.5 Flash, strict JSON"]
-    A --> C{"CIO routing, plain code"}
-    C -->|"pain 8+, ops subreddit"| EQ[("engineer-tasks queue")]
-    C -->|"everything else"| D["Discord alert: Approve / Dismiss"]
-    W["fubanx.com case form"] --> D
-    D -->|"click, signature verified"| TQ[("triage-decisions queue")]
-    TQ --> TR["Triage worker"]
-    TR --> EQ
-    EQ --> E["Engineer: Claude Sonnet 5.5"]
-    E --> Q{"QA wall: AST, parsers, README reviewer, security gate"}
-    Q -->|"rejected, max 3 attempts"| E
-    Q -->|"passed"| PR["Pull request in fubanx-solutions"]
-    PR --> H["Human review and merge"]
-```
-
-</details>
 
 FUBANX runs on Azure Functions (Python 3.12, Consumption plan), with Storage Queues between every stage and Table Storage as its memory. The infrastructure is provisioned with OpenTofu, and [fubanx.com](https://fubanx.com) runs on Next.js on Vercel.
 
